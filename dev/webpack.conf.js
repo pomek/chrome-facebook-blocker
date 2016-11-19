@@ -34,7 +34,7 @@ module.exports = (options) => {
     if (options.saveFiles) {
         webpackConfig.output = {
             filename: "[name].js"
-        }
+        };
     }
 
     if (options.coverage) {
@@ -53,7 +53,7 @@ module.exports = (options) => {
     }
 
     if (options.sourceMap) {
-        webpackConfig.devtool = 'inline-source-map';
+        webpackConfig.devtool = 'eval';
     }
 
     return webpackConfig;
