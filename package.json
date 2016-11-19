@@ -1,0 +1,38 @@
+{
+  "name": "chrome-facebook-blocker",
+  "version": "0.0.1",
+  "description": "A Chrome extension which allows blocking other users who don't know about being blocked.",
+  "author": "Kamil Piechaczek <pomek@pomek.pl>",
+  "license": "MIT",
+  "keywords": [
+    "chrome",
+    "facebook",
+    "blocker"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "karma": "^1.3.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.1",
+    "karma-sinon": "^1.0.5",
+    "karma-webpack": "^1.8.0",
+    "mocha": "^3.1.2",
+    "sinon": "^1.17.6",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^3.2.0"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "bugs": {
+    "url": "https://github.com/pomek/chrome-facebook-blocker/issues"
+  }
+}
