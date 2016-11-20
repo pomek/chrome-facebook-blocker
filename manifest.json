@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Facebook Blocker",
+  "description": "An extension which allows blocking other users who don't know about being blocked.",
+  "version": "0.0.1",
+  "browser_action": {
+    "default_icon": "assets/icon_48.png"
+  },
+  "icons": {
+    "16": "assets/icon_16.png",
+    "48": "assets/icon_48.png",
+    "128": "assets/icon_128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.facebook.com/*"
+      ],
+      "js": [
+        "dist/script.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab"
+  ]
+}

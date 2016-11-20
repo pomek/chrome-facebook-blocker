@@ -81,14 +81,24 @@ module.exports = (options) => {
     };
 
     if (options.coverage) {
-        karmaConfig.reporters.push('coverage');
+        const coverageDir = path.join( __dirname, '..', '.coverage' );
+
+        karmaConfig.reporters.push( 'coverage' );
 
         karmaConfig.coverageReporter = {
-            dir: '.coverage',
             reporters: [
-                {type: 'html'},
-                {type: 'text-summary'},
-                {type: 'lcovonly'}
+                {
+                    type: 'text-summary'
+                },
+                {
+                    dir: coverageDir,
+                    type: 'html'
+                },
+                {
+                    type: 'lcovonly',
+                    subdir: '.',
+                    dir: coverageDir
+                }
             ]
         };
     }

@@ -7,5 +7,20 @@
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
+  },
+  "rules": {
+    "array-callback-return": "error",
+    "eqeqeq": "warn",
+    "no-else-return": "error",
+    "no-implicit-globals": "error",
+    "no-multi-spaces": "error",
+    "no-return-assign": "error",
+    "yoda": "warn",
+    "callback-return": "error",
+    "indent": [
+      "error",
+      4
+    ],
+    "semi": "error"
   }
 }
