@@ -44,7 +44,7 @@ describe('Filters - PostFilter', () => {
             expect(elements[0]).to.equal(wholeBlock);
         });
 
-        it('returns an empty array when post cannot be found (out of the document)', () => {
+        it('returns an empty array when post cannot be found', () => {
             const elements = filter.getElements(avatarElement);
 
             expect(elements).to.be.a('array');
@@ -55,28 +55,6 @@ describe('Filters - PostFilter', () => {
             nestedInvalidLink = document.getElementById('invalid-link-1');
 
             const elements = filter.getElements(nestedInvalidLink);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when post cannot be found (parentElement is null) #1', () => {
-            nestedInvalidLink = document.getElementById('invalid-link-2');
-
-            const elements = filter.getElements(nestedInvalidLink);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when post cannot be found (parentElement is null) #2', () => {
-            sinon.stub(avatarElement, 'parentElement', {
-                get() {
-                    return null;
-                }
-            });
-
-            const elements = filter.getElements(avatarElement);
 
             expect(elements).to.be.a('array');
             expect(elements.length).to.equal(0);

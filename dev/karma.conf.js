@@ -13,6 +13,14 @@ const webpackConfig = require('./webpack.conf');
  * @returns {Object}
  */
 module.exports = (options) => {
+    const hasAnyFilterInTestFiles = options.files.some((file) => {
+        return file.match(path.join('engine', 'filters'));
+    });
+
+    if (hasAnyFilterInTestFiles) {
+        options.files.unshift(path.join('tests', 'engine', 'filters', 'abstractfilter.js'));
+    }
+
     const karmaConfig = {
         frameworks: ['mocha', 'chai', 'sinon'],
 

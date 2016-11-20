@@ -1,4 +1,4 @@
-/* global describe, it, beforeEach, afterEach, expect, sinon */
+/* global describe, it, beforeEach, afterEach, expect */
 
 import SharePostFilter from '../../../src/engine/filters/sharepostfilter';
 import sharePoll from './_html/shared-poll';
@@ -69,28 +69,6 @@ describe('Filters - SharePostFilter', () => {
                 nestedInvalidLink = document.getElementById('invalid-link-1');
 
                 const elements = filter.getElements(nestedInvalidLink);
-
-                expect(elements).to.be.a('array');
-                expect(elements.length).to.equal(0);
-            });
-
-            it('returns an empty array when element cannot be found (parentElement is null) #1', () => {
-                nestedInvalidLink = document.getElementById('invalid-link-2');
-
-                const elements = filter.getElements(nestedInvalidLink);
-
-                expect(elements).to.be.a('array');
-                expect(elements.length).to.equal(0);
-            });
-
-            it('returns an empty array when element cannot be found (parentElement is null) #2', () => {
-                sinon.stub(avatarElement, 'parentElement', {
-                    get() {
-                        return null;
-                    }
-                });
-
-                const elements = filter.getElements(avatarElement);
 
                 expect(elements).to.be.a('array');
                 expect(elements.length).to.equal(0);

@@ -1,11 +1,11 @@
-/* global describe, it, beforeEach, afterEach, expect, sinon */
+/* global describe, it, beforeEach, afterEach, expect */
 
 import CommentFilter from '../../../src/engine/filters/commentfilter';
 import fullComment from './_html/full-comment';
 import repliesListToComment from './_html/replies-list-to-comment';
 
 describe('Filters - CommentFilter', () => {
-    let filter, wholeBlock, linkElement, avatarElement, nestedInvalidLink, controlElement;
+    let filter, wholeBlock, linkElement, avatarElement;
 
     beforeEach(() => {
         const divElement = document.createElement('div');
@@ -16,7 +16,6 @@ describe('Filters - CommentFilter', () => {
         wholeBlock = document.getElementById('ignore-person-comment-block');
         linkElement = document.getElementById('ignore-person-link');
         avatarElement = document.getElementById('ignore-person-avatar-link');
-        controlElement = document.getElementById('control-element');
         filter = new CommentFilter();
     });
 
@@ -54,60 +53,7 @@ describe('Filters - CommentFilter', () => {
             expect(elements.length).to.equal(0);
         });
 
-        it('returns an empty array when comment block cannot be found (out of the document)', () => {
-            const elements = filter.getElements(avatarElement);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when comment block cannot be found (parentElement does not contain `data-ft` attribute)', () => {
-            nestedInvalidLink = document.getElementById('invalid-link-1');
-
-            const elements = filter.getElements(nestedInvalidLink);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when comment block cannot be found (parentElement does not contain class "UFIComment")', () => {
-            nestedInvalidLink = document.getElementById('invalid-link-1');
-            controlElement.classList.add('UFIRow');
-            controlElement.setAttribute('data-ft', 'test');
-
-            const elements = filter.getElements(nestedInvalidLink);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when comment block cannot be found (parentElement does not contain class "UFIRow")', () => {
-            nestedInvalidLink = document.getElementById('invalid-link-1');
-            controlElement.classList.add('UFIComment');
-            controlElement.setAttribute('data-ft', 'test');
-
-            const elements = filter.getElements(nestedInvalidLink);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when comment block cannot be found (parentElement is null) #1', () => {
-            nestedInvalidLink = document.getElementById('invalid-link-2');
-
-            const elements = filter.getElements(nestedInvalidLink);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(0);
-        });
-
-        it('returns an empty array when comment block cannot be found (parentElement is null) #2', () => {
-            sinon.stub(avatarElement, 'parentElement', {
-                get() {
-                    return null;
-                }
-            });
-
+        it('returns an empty array when "reply for the comment" element cannot be found (out of document)', () => {
             const elements = filter.getElements(avatarElement);
 
             expect(elements).to.be.a('array');
@@ -131,22 +77,6 @@ describe('Filters - CommentFilter', () => {
 
             const repliesElement = document.getElementById('replies-to-post');
             repliesElement.classList.remove('UFIReplyList');
-
-            const elements = filter.getElements(linkElement);
-
-            expect(elements).to.be.a('array');
-            expect(elements.length).to.equal(1);
-            expect(elements[0]).to.equal(wholeBlock);
-        });
-
-        it('returns an array with comment only (replies container does not exist)', () => {
-            wholeBlock.parentElement.insertAdjacentHTML('beforeend', repliesListToComment);
-
-            sinon.stub(wholeBlock, 'nextElementSibling', {
-                get() {
-                    return wholeBlock;
-                }
-            });
 
             const elements = filter.getElements(linkElement);
 
