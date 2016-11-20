@@ -10,6 +10,18 @@
 
 This extension is still under heavy development and is not recommended to use it on your browser.
 
+## Testing
+
+In order to test this extension, follow instruction below:
+
+1. Clone this repository.
+2. Install required dependencies (`npm install`).
+3. Insert profiles which should be blocked (`./src/utils.js`).
+4. Compile the extension (`node_modules/.bin/gulp compile`).
+5. [Install the extension in Chrome.](https://developer.chrome.com/extensions/getstarted#unpacked)
+
+If you have any idea how to improve this extension, please leave a ticket.
+
 ## Development
 
 * `gulp compile` - compiles the whole script into executable file,
