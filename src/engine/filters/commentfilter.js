@@ -1,47 +1,27 @@
-export default class CommentFilter {
+import AbstractFilter from './abstractfilter';
+
+export default class CommentFilter extends AbstractFilter {
     /**
      * @param {HTMLAnchorElement} element The link which direct to the profile of blocked user.
      * @returns {Array.<HTMLElement>}
      */
     getElements (element) {
-        if (!(element instanceof HTMLAnchorElement)) {
-            throw new Error(`Class is not an instance of HTMLAnchorElement. Given ${ element.constructor.name }.`);
-        }
+        const rootElement = super._findRootContainer(element, 10);
 
-        // A link which directs to the user profile is wrapped inside a lot of elements.
-        // From the link point of view - we need to go up 10 times. After that pointer will
-        // indicate to the whole comment element.
-
-        let wholeBlock = element.parentElement;
-
-        // Try/catch prevents when `wholeBlock.parentElement` does not exist. It means
-        // given element is not a post.
-        try {
-            for (let i = 0; i < 9; ++i) {
-                wholeBlock = wholeBlock.parentElement;
-            }
-
-            const elements = [];
-
-            if (this._isValidCommentElement(wholeBlock)) {
-                elements.push(wholeBlock);
-            }
-
-            if (!elements.length) {
-                return [];
-            }
-
-            // Checks whether to next element is a container with replies for the comment.
-            let commentBlock = wholeBlock.nextElementSibling;
-
-            if (this._isValidReplyElement(commentBlock)) {
-                elements.push(commentBlock);
-            }
-
-            return elements;
-        } catch (e) {
+        if (!this._isValidCommentElement(rootElement)) {
             return [];
         }
+
+        const elements = [rootElement];
+
+        // Checks whether to next element is a container with replies for the comment.
+        let commentBlock = rootElement.nextElementSibling;
+
+        if (this._isValidReplyElement(commentBlock)) {
+            elements.push(commentBlock);
+        }
+
+        return elements;
     }
 
     /**
@@ -52,15 +32,7 @@ export default class CommentFilter {
      * @returns {Boolean}
      */
     _isValidCommentElement (element) {
-        if (!(element instanceof HTMLElement)) {
-            return false;
-        }
-
-        if (!element.hasAttribute('data-ft')) {
-            return false;
-        }
-
-        if (!element.classList.contains('UFIComment') || !element.classList.contains('UFIRow')) {
+        if (!super._isValidCommentElement(element)) {
             return false;
         }
 

@@ -1,34 +1,18 @@
-export default class ReplyToCommentFilter {
+import AbstractFilter from './abstractfilter';
+
+export default class ReplyToCommentFilter extends AbstractFilter {
     /**
      * @param {HTMLAnchorElement} element The link which direct to the profile of blocked user.
      * @returns {Array.<HTMLElement>}
      */
     getElements (element) {
-        if (!(element instanceof HTMLAnchorElement)) {
-            throw new Error(`Class is not an instance of HTMLAnchorElement. Given ${ element.constructor.name }.`);
+        const rootElement = super._findRootContainer(element, 10);
+
+        if (this._isValidCommentElement(rootElement)) {
+            return [rootElement];
         }
 
-        // A link which directs to the user profile is wrapped inside a lot of elements.
-        // From the link point of view - we need to go up 10 times. After that pointer will
-        // indicate to the whole comment element.
-
-        let wholeBlock = element.parentElement;
-
-        // Try/catch prevents when `wholeBlock.parentElement` does not exist. It means
-        // given element is not a post.
-        try {
-            for (let i = 0; i < 9; ++i) {
-                wholeBlock = wholeBlock.parentElement;
-            }
-
-            if (!this._isValidCommentElement(wholeBlock)) {
-                return [];
-            }
-
-            return [wholeBlock];
-        } catch (e) {
-            return [];
-        }
+        return [];
     }
 
     /**
@@ -39,15 +23,7 @@ export default class ReplyToCommentFilter {
      * @returns {Boolean}
      */
     _isValidCommentElement (element) {
-        if (!(element instanceof HTMLElement)) {
-            return false;
-        }
-
-        if (!element.hasAttribute('data-ft')) {
-            return false;
-        }
-
-        if (!element.classList.contains('UFIComment') || !element.classList.contains('UFIRow')) {
+        if (!super._isValidCommentElement(element)) {
             return false;
         }
 

@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const webpackConfig = require('./webpack.conf');
 
 /**
@@ -24,7 +25,9 @@ module.exports = (options) => {
             };
         }),
 
-        exclude: [],
+        exclude: [
+            path.join('tests', 'engine', 'filters', '_html', '**', '*.js')
+        ],
 
         preprocessors: {
             'src/**/*.js': ['webpack'],
