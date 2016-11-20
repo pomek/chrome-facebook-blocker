@@ -1,4 +1,4 @@
-/* global describe, it, beforeEach, afterEach, expect, utils */
+/* global describe, it, beforeEach, afterEach, expect, sinon */
 
 import utils from '../src/utils';
 import linkElements from './_html/link-elements';
@@ -46,6 +46,7 @@ describe('Utils', () => {
             ]);
 
             expect(utils.getElementsToFilter()).to.deep.equal(links);
+            expect(getBlockedUsersStub.calledOnce).to.equal(true);
         });
     });
 });

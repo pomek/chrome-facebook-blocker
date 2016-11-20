@@ -2,8 +2,8 @@
 
 import SharePostFilter from '../../../src/engine/filters/sharepostfilter';
 import sharePoll from './_html/shared-poll';
-import shareEvent from './_html/shared-event';
-import shareImage from './_html/shared-image';
+// import shareEvent from './_html/shared-event';
+// import shareImage from './_html/shared-image';
 
 const scenarios = {
     poll: sharePoll
@@ -28,7 +28,7 @@ describe('Filters - SharePostFilter', () => {
 
     Object.keys(scenarios).forEach((scenarioName) => {
         describe(scenarioName, () => {
-            let wholeBlock, linkElement, avatarElement, nestedInvalidLink, controlElement;
+            let wholeBlock, linkElement, avatarElement, nestedInvalidLink;
 
             beforeEach(() => {
                 const divElement = document.createElement('div');
@@ -39,7 +39,6 @@ describe('Filters - SharePostFilter', () => {
                 wholeBlock = document.getElementById('ignore-person-root-content');
                 linkElement = document.getElementById('ignore-person-link');
                 avatarElement = document.getElementById('ignore-person-avatar-link');
-                controlElement = document.getElementById('control-element');
             });
 
             afterEach(() => {

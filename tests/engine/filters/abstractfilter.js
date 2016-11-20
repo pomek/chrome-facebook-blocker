@@ -73,7 +73,7 @@ describe('Filters - AbstractFilter', () => {
     describe('_findRootContainer', () => {
         it('throws an error when element is not an instance of HTMLAnchorElement', () => {
             expect(() => {
-                filter._findRootContainer(elements.div, 0)
+                filter._findRootContainer(elements.div, 0);
             }).to.throw(Error, 'Class is not an instance of HTMLAnchorElement. Given HTMLDivElement.');
         });
 
