@@ -4,7 +4,6 @@ import utils from '../src/utils';
 import linkElements from './_html/link-elements';
 
 describe('Utils', () => {
-
     describe('getBlockedUsers', () => {
         it('should be a function', () => {
             expect(utils.getBlockedUsers).to.be.a('function');
