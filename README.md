@@ -12,7 +12,7 @@ This extension is still under heavy development and is not recommended to use it
 
 ## Testing
 
-In order to test this extension, follow instruction below:
+In order to test this extension, follow the instruction below:
 
 1. Clone this repository.
 2. Install required dependencies (`npm install`).
