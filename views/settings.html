@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Facebook Blocker</title>
+    <style>
+        body {
+            width: 400px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .name {
+            margin: 0;
+        }
+
+        .header--adjusted {
+            margin-bottom: 15px;
+        }
+
+        .well > p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body class="container">
+
+<header class="row header--adjusted">
+    <div class="col-xs-4">
+        <img src="../assets/icon_128.png" alt="" class="img-thumbnail">
+    </div>
+    <div class="col-xs-7 text-center">
+        <h1 class="name">Facebook Blocker</h1>
+    </div>
+</header>
+
+<div class="well">
+    <p>This extension allows you blocking other users who don't know about being blocked.</p>
+    <p>It means you won't see any content posted by blocked users and they won't know about it.</p>
+    <p>You can also use a Facebook <i>"Block"</i> option on user's profile but most probably the user finds out about that.</p>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            Block new user
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form action="#">
+            <label for="user_profile">Profile ID or name</label>
+
+            <div class="input-group">
+                <input type="text" class="form-control" id="user_profile" placeholder="Profile ID or name">
+                <span class="input-group-btn">
+                <button class="btn btn-danger" type="submit">Disable</button>
+            </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            Blocked users
+        </h2>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+
+</body>
+</html>
