@@ -9,6 +9,10 @@ const utils = {
             'NotExistingFacebookUsers' // Todo: Temproary code coverage fix.
         ];
 
+        // Todo:
+        // - user id => /profile.php?id=[uid]
+        // - nick => /[nick]
+
         return users.map((nickName) => new RegExp(`/${ nickName }`, 'i'));
     },
 

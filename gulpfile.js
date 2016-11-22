@@ -15,7 +15,7 @@ gulp.task('compile', () => {
         saveFiles: true
     });
 
-    return gulp.src(['./src/script.js'])
+    return gulp.src(['./src/script.js', './src/settings.js'])
         .pipe(named())
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./dist'));
