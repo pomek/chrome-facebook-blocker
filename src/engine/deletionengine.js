@@ -1,5 +1,3 @@
-/* global Set */
-
 export default class DeletionEngine {
     constructor () {
         /**

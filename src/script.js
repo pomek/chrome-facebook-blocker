@@ -15,16 +15,22 @@ engine.add(new SharePostFilter());
 let lastCalledTime = new Date();
 
 const documentObserver = new MutationObserver((mutations) => {
-    // TODO: Most probably we would check only `addedNodes`.
-    if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
-        // Run once on 200ms.
-        if (new Date() - lastCalledTime < 200) {
-            return;
-        }
+    const hasAddedNodes = mutations.some((itemMutation) => itemMutation.addedNodes.length);
 
-        lastCalledTime = new Date();
-        utils.getElementsToFilter().map((element) => engine.remove(element));
+    if (!hasAddedNodes) {
+        return;
     }
+
+    // Run once on 500ms.
+    if (new Date() - lastCalledTime < 500) {
+        return;
+    }
+
+    lastCalledTime = new Date();
+    utils.getElementsToFilter()
+        .then((elements) => {
+            elements.map((item) => engine.remove(item))
+        });
 });
 
 documentObserver.observe(document, {childList: true, subtree: true});

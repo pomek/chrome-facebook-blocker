@@ -34,8 +34,7 @@ module.exports = (options) => {
         }),
 
         exclude: [
-            path.join('tests', 'engine', 'filters', '_html', '**', '*.js'),
-            path.join('tests', '_html', '**', '*.js')
+            path.join('tests', '**', '_*', '**', '*.js')
         ],
 
         preprocessors: {
