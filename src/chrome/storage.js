@@ -33,5 +33,4 @@ export default class Storage {
             chrome.storage.sync.get(defaultSettings, (items) => resolve(items[key]));
         });
     }
-
 }

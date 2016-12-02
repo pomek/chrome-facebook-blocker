@@ -17,6 +17,7 @@ const elements = {
     }
 };
 
+// Show additional block with information about user's profile.
 elements.helpInfoTitle.addEventListener('click', () => {
     elements.helpInfoTitle.classList.add('hidden');
     elements.helpInfo.classList.remove('hidden');
@@ -47,7 +48,7 @@ elements.blockPersonForm.addEventListener('submit', (evt) => {
         })
         .then(renderBlockedUsers)
         .catch((err) => {
-            setError(err.message)
+            setError(err.message);
         });
 
 });
