@@ -1,6 +1,6 @@
 {
   "name": "chrome-facebook-blocker",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A Chrome extension which allows blocking other users who don't know about being blocked.",
   "author": "Kamil Piechaczek <pomek@pomek.pl>",
   "license": "MIT",
