@@ -29,7 +29,7 @@ const documentObserver = new MutationObserver((mutations) => {
     lastCalledTime = new Date();
     utils.getElementsToFilter()
         .then((elements) => {
-            elements.map((item) => engine.remove(item))
+            elements.map((item) => engine.remove(item));
         });
 });
 
